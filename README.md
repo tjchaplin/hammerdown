@@ -23,6 +23,12 @@ hammerDown.readableStream().pipe(process.stdout);
 	Some text **bold text**
 ```
 
+# Install
+
+```
+npm install hammerdown
+```
+
 # Purpose 
 
 To have an easy way to programatically generate a stream of markdown text.  This library includes a complete set of Markdown attributes to generate Markdown document streams.

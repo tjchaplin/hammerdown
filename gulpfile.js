@@ -3,10 +3,10 @@ var gutil = require('gulp-util');
 var mocha = require('gulp-mocha');
 var jshint = require('gulp-jshint');
 
-gulp.task('default', ['lint','unitTest','integrationTest']);
+gulp.task('default', ['lint','test']);
 
 gulp.task('watch', function() {
-    gulp.watch(['test/**', 'lib/**'], ["lint","unitTest","integrationTest"])
+    gulp.watch(['test/**', 'lib/**'], ["lint","test"])
 });
 
 gulp.task('lint', function() {
@@ -15,6 +15,8 @@ gulp.task('lint', function() {
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
+
+gulp.task('test',["unitTest","integrationTest"]);
 
 gulp.task('unitTest',function(){
     gulp.src(['test/unit/**/*.js'])

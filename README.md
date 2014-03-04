@@ -1,6 +1,8 @@
 hammerdown
 ==========
 
+[![Build Status](https://travis-ci.org/tjchaplin/hammerdown.png?branch=master)](https://travis-ci.org/tjchaplin/hammerdown)
+
 Streaming Markdown Writer
 
 # Get Started

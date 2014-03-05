@@ -1,2 +1,2 @@
-module.exports = require("./lib/hammerdown.js");
+module.exports = require("./lib/hammerDown.js");
 module.exports.githubFlavoredHammerDown = require("./lib/githubFlavoredHammerDown.js");

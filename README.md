@@ -3,7 +3,7 @@ hammerdown
 
 [![Build Status](https://travis-ci.org/tjchaplin/hammerdown.png?branch=master)](https://travis-ci.org/tjchaplin/hammerdown)
 
-Streaming Markdown Writer
+Streaming markdown writer
 
 # Get Started
 
@@ -22,9 +22,9 @@ hammerDown.headerOpen(1)
 hammerDown.readableStream().pipe(process.stdout);
 
 //Outputs
-	# A Markdown Header
-
-	Some text **bold text**
+//	# A Markdown Header
+//
+//	Some text **bold text**
 ```
 
 ## Github Flavored Markdown Example
@@ -69,7 +69,7 @@ npm install hammerdown
 
 To have an easy way to programatically generate a stream of markdown text.  This library includes a complete set of Markdown attributes to generate Markdown document streams. It also includes the definitions used to produce [Github-Flavored-Markdown](https://help.github.com/articles/github-flavored-markdown).
 
-Markdown is a mechanism to create documents [see](http://daringfireball.net/projects/markdown/) for more details.  This library allows developers to leverage the simplicity of Markdown for whatever purpose this say fit.  This may include using hammerdown to convert text, XML, or HTML into Markdown.
+Markdown is a mechanism to create documents. [See](http://daringfireball.net/projects/markdown/) for more details.  Hammerdown allows developers to leverage the simplicity of Markdown for whatever purpose this say fit.  This may include using hammerdown to convert text, XML, or HTML into Markdown.
 
 # Examples
 

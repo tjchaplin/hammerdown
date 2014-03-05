@@ -1,7 +1,7 @@
 var fs = require('fs');
 var should = require('should');
 var fixtureUtils = require('./fixtureUtils');
-var HammerDown = require('../../lib/hammerDown');
+var HammerDown = require('../../../lib/hammerDown');
 
 
 describe("When using hammerdown to add links",function() {

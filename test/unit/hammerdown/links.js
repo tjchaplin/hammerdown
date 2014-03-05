@@ -31,7 +31,8 @@ describe("When wrting markdown",function() {
 						href : '/somelink',
 						title : 'someTitle'
 					};
-					hammerDown.linkClose(linkDefinition);
+					hammerDown.writerState.saveLinkDefinition(linkDefinition);
+					hammerDown.linkClose();
 					var expected = '](/somelink \"someTitle\")';
 
 					var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
@@ -44,8 +45,9 @@ describe("When wrting markdown",function() {
 						href : '/somelink',
 						title : 'someTitle'
 					};
+					hammerDown.writerState.saveLinkDefinition(linkDefinition);
 					hammerDown.options.referenceLinks = true;
-					hammerDown.linkClose(linkDefinition);
+					hammerDown.linkClose();
 					var expected = '][0]';
 
 					var appended = hammerDownStream.appendFormatted.getCall(0).args[0];

@@ -15,9 +15,9 @@ describe("When using hammerdown to add links",function() {
 			var hammerDown = new HammerDown();
 
 			var linkDefinition = {};
-			hammerDown.linkOpen()
+			hammerDown.linkOpen(linkDefinition)
 						.text("link")
-						.linkClose(linkDefinition)
+						.linkClose()
 						.done();
 
 			var writeStream = hammerDown.readableStream().pipe(fileOutput);
@@ -37,9 +37,9 @@ describe("When using hammerdown to add links",function() {
 			var linkDefinition = {
 				href : '/someUrl'
 			};
-			hammerDown.linkOpen()
+			hammerDown.linkOpen(linkDefinition)
 						.text("link")
-						.linkClose(linkDefinition)
+						.linkClose()
 						.done();
 
 			var writeStream = hammerDown.readableStream().pipe(fileOutput);
@@ -60,9 +60,9 @@ describe("When using hammerdown to add links",function() {
 				href : '/someUrl',
 				title : 'someUrlTitle'
 			};
-			hammerDown.linkOpen()
+			hammerDown.linkOpen(linkDefinition)
 						.text("link")
-						.linkClose(linkDefinition)
+						.linkClose()
 						.done();
 
 			var writeStream = hammerDown.readableStream().pipe(fileOutput);
@@ -85,9 +85,9 @@ describe("When using hammerdown to add links",function() {
 			var linkDefinition = {
 				href : '/someUrl'
 			};
-			hammerDown.linkOpen()
+			hammerDown.linkOpen(linkDefinition)
 						.text("link")
-						.linkClose(linkDefinition)
+						.linkClose()
 						.done();
 
 			var writeStream = hammerDown.readableStream().pipe(fileOutput);
@@ -113,15 +113,15 @@ describe("When using hammerdown to add links",function() {
 			var linkDefinition2 = {
 				href : '/someUrl'
 			};
-			hammerDown.linkOpen()
+			hammerDown.linkOpen(linkDefinition1)
 						.text("link1")
-						.linkClose(linkDefinition1)
-						.linkOpen()
+						.linkClose()
+						.linkOpen(linkDefinition2)
 						.text("link2")
-						.linkClose(linkDefinition2)
-						.linkOpen()
+						.linkClose()
+						.linkOpen(linkDefinition1)
 						.text("link1")
-						.linkClose(linkDefinition1)
+						.linkClose()
 						.done();
 
 			var writeStream = hammerDown.readableStream().pipe(fileOutput);

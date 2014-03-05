@@ -17,6 +17,9 @@ describe("When using hammerdown",function() {
 			hammerDown.headerMarker()
 						.text("someText")
 						.lineBreak()
+						.text("someMoreText")
+						.paragraph()
+						.text("someAdditionalText")
 					.done();
 
 			var writeStream = hammerDown.readableStream().pipe(fileOutput);

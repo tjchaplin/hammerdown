@@ -33,4 +33,13 @@ describe("When wrting markdown",function() {
 			appended.should.be.eql(expected);
 		});
 	});
+	describe("When appending paragraph",function() {		
+		it("Should append two new lines",function(){
+			hammerDown.paragraph();
+			var expected = '\n\n';	
+
+			var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
+			appended.should.be.eql(expected);
+		});
+	});
 });

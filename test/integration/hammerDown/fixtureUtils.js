@@ -31,7 +31,7 @@ module.exports.assertActualEqualsExpected = function(fixtureName){
 	var actualFile =  __dirname+"/fixtures/actual/"+fixtureName;
 	var expectedFile =  __dirname+"/fixtures/expected/"+fixtureName;
 
-	var actualData = fs.readFileSync(actualFile, 'utf8');
-	var expectedData = fs.readFileSync(expectedFile, 'utf8');
+	var actualData = fs.readFileSync(actualFile, 'utf8').replace(/[^\r\n]+/g,'\n');
+	var expectedData = fs.readFileSync(expectedFile, 'utf8').replace(/[^\r\n]+/g,'\n');
 	actualData.should.be.eql(expectedData);
 };

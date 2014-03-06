@@ -1,4 +1,5 @@
 var sinon = require('sinon');
+var should = require('should');
 var HammerDown = require('../../../lib/githubFlavoredHammerDown');
 
 describe("When wrting markdown",function() {

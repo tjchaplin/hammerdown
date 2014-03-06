@@ -33,6 +33,46 @@ hammerDown.readableStream().pipe(process.stdout);
 var hammerdown = require("hammerdown").githubFlavoredHammerDown;
 
 //Write markdown
+hammerDown.blockCodeOpen()
+				.codeOpen("javascript")
+				.text("function myFunction(params){\n\treturn true;\n};\n")
+				.codeClose()
+			.blockCodeClose()
+		.done();
+
+hammerDown.readableStream().pipe(process.stdout);
+
+//Outputs
+//	```javascript
+//	function myFunction(params){
+//		return true;
+//	};
+//	```
+```
+
+# Install
+
+```
+npm install hammerdown
+```
+
+# Purpose 
+
+To have an easy way to programatically generate a stream of markdown text.  This library includes a complete set of Markdown attributes to generate Markdown document streams. It also includes the definitions used to produce [Github-Flavored-Markdown](https://help.github.com/articles/github-flavored-markdown).
+
+Markdown is a mechanism to create documents. [See](http://daringfireball.net/projects/markdown/) for more details.  Hammerdown allows developers to leverage the simplicity of Markdown for whatever purpose this say fit.  This may include using hammerdown to convert text, XML, or HTML into Markdown.
+
+# Examples
+
+Below is a select group of examples.  More examples can be found by looking at the integration tests.
+
+# Github Flavored Markdown Examples
+
+## Tables
+```javascript
+var hammerdown = require("hammerdown").githubFlavoredHammerDown;
+
+//Write markdown
 hammerDown.tableRowOpen()
 				.tableHeaderOpen()
 					.text("header1")
@@ -58,19 +98,3 @@ hammerDown.readableStream().pipe(process.stdout);
 //	|---|---|
 //	|row1-col1|row1-col2|
 ```
-
-# Install
-
-```
-npm install hammerdown
-```
-
-# Purpose 
-
-To have an easy way to programatically generate a stream of markdown text.  This library includes a complete set of Markdown attributes to generate Markdown document streams. It also includes the definitions used to produce [Github-Flavored-Markdown](https://help.github.com/articles/github-flavored-markdown).
-
-Markdown is a mechanism to create documents. [See](http://daringfireball.net/projects/markdown/) for more details.  Hammerdown allows developers to leverage the simplicity of Markdown for whatever purpose this say fit.  This may include using hammerdown to convert text, XML, or HTML into Markdown.
-
-# Examples
-
-The integration tests show examples of the different usages of the api

@@ -15,6 +15,31 @@ describe("When wrting markdown",function() {
 		sinon.spy(hammerDownStream,'appendFormatted');
 	});
 	describe("When appending text",function(){
+		describe("When not in a block quote or block code",function() {			
+			describe("When text only contains non-words or numbers",function() {
+				it("Should not append",function(){
+					hammerDown.writerState.inCode();
+					var data = ' \n \t  \n\r\n';
+					var expected = '';
+					
+					hammerDown.text(data);
+
+					hammerDownStream.append.called.should.be.eql(false);
+				});
+			});
+			describe("When text contains non-words or numbers and words and numbers",function() {
+				it("Should append",function(){
+					hammerDown.writerState.inCode();
+					var data = '\nother text';
+					var expected = '\nother text';
+					
+					hammerDown.text(data);
+
+					var appended = hammerDownStream.append.getCall(0).args[0];
+					appended.should.be.eql(expected);
+				});
+			});
+		});
 		describe("When in a code block",function() {			
 			describe("When text contains backticks",function() {
 				it("Should append text with escape ticks to document",function(){

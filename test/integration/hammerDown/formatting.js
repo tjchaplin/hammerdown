@@ -6,7 +6,7 @@ var HammerDown = require('../../../lib/hammerDown');
 
 describe("When using hammerdown",function() {
 	var resultDirectory =fixtureUtils.createTestDirectory();
-
+	
 	describe("When outputing formatting",function() {
 		it("Should match expected",function(done){
 			var testFixture = "formatting.md";

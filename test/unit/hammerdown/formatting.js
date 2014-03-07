@@ -39,7 +39,7 @@ describe("When wrting markdown",function() {
 			hammerDown.paragraph();
 			var expected = '\n\n';	
 
-			var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
+			var appended = hammerDownStream.appendRaw.getCall(0).args[0];
 			appended.should.be.eql(expected);
 		});
 	});

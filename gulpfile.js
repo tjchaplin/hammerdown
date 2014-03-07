@@ -26,10 +26,10 @@ gulp.task('test',["unitTest","integrationTest"]);
 
 gulp.task('unitTest',function(){
     gulp.src(['test/unit/**/*.js'])
-        .pipe(mocha({ reporter: 'list' }));
+        .pipe(mocha({ reporter: 'spec' }));
 });
 
 gulp.task('integrationTest',function(){
     gulp.src(['test/integration/**/*.js'])
-        .pipe(mocha({ reporter: 'list' }));
+        .pipe(mocha({ reporter: 'spec' }));
 })

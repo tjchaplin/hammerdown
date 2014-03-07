@@ -1,6 +1,6 @@
 {
   "name": "hammerdown",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "index.js",
   "description": "Streaming Markdown Writer",
   "homepage": "https://github.com/tjchaplin/hammerdown",

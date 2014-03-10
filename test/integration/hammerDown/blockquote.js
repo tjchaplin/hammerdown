@@ -6,6 +6,25 @@ var HammerDown = require('../../../lib/hammerDown');
 
 describe("When using hammerdown",function() {
 	var resultDirectory =fixtureUtils.createTestDirectory();
+	describe("When outputing blockquote text starting with newlines",function() {
+		it("Should match expected",function(done){
+			var testFixture = "blockquoteStartingWithNewlines.md";
+			var resultFile = resultDirectory+"/"+testFixture;
+			fileOutput = fs.createWriteStream(resultFile);
+			var hammerDown = new HammerDown();
+
+			hammerDown.blockQuoteOpen()
+						.text("\n\nblockquote line 1")
+					.blockQuoteClose()
+					.done();
+
+			var writeStream = hammerDown.readableStream().pipe(fileOutput);
+			writeStream.on('close',function(){
+				fixtureUtils.assertActualEqualsExpected(testFixture);
+				done();
+			});			
+		});
+	});
 	describe("When outputing blockquote with one line",function() {
 		it("Should match expected",function(done){
 			var testFixture = "blockquoteWithOneLine.md";
@@ -44,25 +63,6 @@ describe("When using hammerdown",function() {
 			});			
 		});
 	});
-		describe("When outputing blockquote text starting with newlines",function() {
-			it("Should match expected",function(done){
-				var testFixture = "blockquoteStartingWithNewlines.md";
-				var resultFile = resultDirectory+"/"+testFixture;
-				fileOutput = fs.createWriteStream(resultFile);
-				var hammerDown = new HammerDown();
-
-				hammerDown.blockQuoteOpen()
-							.text("\n\nblockquote line 1")
-						.blockQuoteClose()
-						.done();
-
-				var writeStream = hammerDown.readableStream().pipe(fileOutput);
-				writeStream.on('close',function(){
-					fixtureUtils.assertActualEqualsExpected(testFixture);
-					done();
-				});			
-			});
-		});
 	describe("When outputing inner blockquotes",function() {
 		it("Should match expected",function(done){
 			var testFixture = "innerBlockquote.md";

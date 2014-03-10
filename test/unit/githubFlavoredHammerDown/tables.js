@@ -32,11 +32,29 @@ describe("When wrting markdown",function() {
 			appended.should.be.eql(expected);
 		});
 	});
+	describe("When appending a open table",function() {		
+		it("Should append paragraph before",function(){
+			hammerDown.tableOpen();
+			var expected = '\n\n';	
+
+			var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
+			appended.should.be.eql(expected);
+		});
+	});
+	describe("When appending a close table",function() {		
+		it("Should append paragraph before",function(){
+			hammerDown.tableClose();
+			var expected = '\n\n';	
+
+			var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
+			appended.should.be.eql(expected);
+		});
+	});
 	describe("When appending a table row",function() {		
 		describe("When appending a open table row",function() {		
 			it("Should append paragraph before",function(){
 				hammerDown.tableRowOpen();
-				var expected = '\n\n';	
+				var expected = '\n';	
 
 				var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
 				appended.should.be.eql(expected);

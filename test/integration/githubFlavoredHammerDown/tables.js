@@ -14,7 +14,9 @@ describe("When using hammerdown",function() {
 			fileOutput = fs.createWriteStream(resultFile);
 			var hammerDown = new HammerDown();
 
-			hammerDown.tableRowOpen()
+			hammerDown.text("Text before table")
+						.tableOpen()
+							.tableRowOpen()
 							.tableHeaderOpen()
 								.text("header1")
 							.tableHeaderClose()
@@ -58,6 +60,8 @@ describe("When using hammerdown",function() {
 								.text("row3-col3")
 							.tableDataClose()
 						.tableRowClose()
+						.tableClose()
+						.text("Text after table")
 					.done();
 
 			var writeStream = hammerDown.readableStream().pipe(fileOutput);

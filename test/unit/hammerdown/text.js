@@ -13,6 +13,7 @@ describe("When wrting markdown",function() {
 		sinon.spy(hammerDownStream,'append');
 		sinon.spy(hammerDownStream,'appendRaw');
 		sinon.spy(hammerDownStream,'appendFormatted');
+		sinon.spy(hammerDownStream,'appendWithPrefix');
 	});
 	describe("When appending text",function(){
 		describe("When not in a block quote or block code",function() {			
@@ -60,48 +61,48 @@ describe("When wrting markdown",function() {
 					it("Should append block Code element to begining",function(){
 						hammerDown.writerState.inBlockCode();
 						var data = 'someBlockCode line';
-						var expected = '    someBlockCode line';
+						var expectedPrefix = '    ';
 						
 						hammerDown.text(data);
 
-						var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
-						appended.should.be.eql(expected);
+						var appendedPrefix = hammerDownStream.appendWithPrefix.getCall(0).args[0];
+						appendedPrefix.should.be.eql(expectedPrefix);
 					});
 				});
 				describe("When text starts with a newline",function() {
 					it("Should append block Code element after newline",function(){
 						hammerDown.writerState.inBlockCode();
 						var data = '\nsomeBlockCode line';
-						var expected = '\n    someBlockCode line';
+						var expectedPrefix = '    ';
 						
 						hammerDown.text(data);
 
-						var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
-						appended.should.be.eql(expected);
+						var appendedPrefix = hammerDownStream.appendWithPrefix.getCall(0).args[0];
+						appendedPrefix.should.be.eql(expectedPrefix);
 					});
 				});
 				describe("When text contains a newline",function() {
 					it("Should append block Code element after newline",function(){
 						hammerDown.writerState.inBlockCode();
 						var data = 'someBlockCode line1\nsomeBlockCode line2';
-						var expected = '    someBlockCode line1\n    someBlockCode line2';
+						var expectedPrefix = '    ';
 						
 						hammerDown.text(data);
 
-						var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
-						appended.should.be.eql(expected);
+						var appendedPrefix = hammerDownStream.appendWithPrefix.getCall(0).args[0];
+						appendedPrefix.should.be.eql(expectedPrefix);
 					});
 				});
 				describe("When text end in a newline",function() {
 					it("Should append block Code element after newline",function(){
 						hammerDown.writerState.inBlockCode();
 						var data = 'someBlockquote line1\n';
-						var expected = '    someBlockquote line1\n    ';
+						var expectedPrefix = '    ';
 						
 						hammerDown.text(data);
 
-						var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
-						appended.should.be.eql(expected);
+						var appendedPrefix = hammerDownStream.appendWithPrefix.getCall(0).args[0];
+						appendedPrefix.should.be.eql(expectedPrefix);
 					});
 				});
 			});
@@ -112,48 +113,48 @@ describe("When wrting markdown",function() {
 					it("Should append block quote element to begining",function(){
 						hammerDown.writerState.inBlockQuote();
 						var data = 'someBlockquote line';
-						var expected = '> someBlockquote line';
+						var expectedPrefix = '> ';
 						
 						hammerDown.text(data);
 
-						var appended = hammerDownStream.append.getCall(0).args[0];
-						appended.should.be.eql(expected);
+						var appendedPrefix = hammerDownStream.appendWithPrefix.getCall(0).args[0];
+						appendedPrefix.should.be.eql(expectedPrefix);
 					});
 				});
 				describe("When text starts with a newline",function() {
 					it("Should append block quote element after newline",function(){
 						hammerDown.writerState.inBlockQuote();
 						var data = '\nsomeBlockquote line';
-						var expected = '\n> someBlockquote line';
+						var expectedPrefix = '> ';
 						
 						hammerDown.text(data);
 
-						var appended = hammerDownStream.append.getCall(0).args[0];
-						appended.should.be.eql(expected);
+						var appendedPrefix = hammerDownStream.appendWithPrefix.getCall(0).args[0];
+						appendedPrefix.should.be.eql(expectedPrefix);
 					});
 				});
 				describe("When text contains a newline",function() {
 					it("Should append block quote element after newline",function(){
 						hammerDown.writerState.inBlockQuote();
 						var data = 'someBlockquote line1\nsomeBlockquote line2';
-						var expected = '> someBlockquote line1\n> someBlockquote line2';
+						var expectedPrefix = '> ';
 						
 						hammerDown.text(data);
 
-						var appended = hammerDownStream.append.getCall(0).args[0];
-						appended.should.be.eql(expected);
+						var appendedPrefix = hammerDownStream.appendWithPrefix.getCall(0).args[0];
+						appendedPrefix.should.be.eql(expectedPrefix);
 					});
 				});
 				describe("When text end in a newline",function() {
 					it("Should append block quote element after newline",function(){
 						hammerDown.writerState.inBlockQuote();
 						var data = 'someBlockquote line1\n';
-						var expected = '> someBlockquote line1\n> ';
+						var expectedPrefix = '> ';
 						
 						hammerDown.text(data);
 
-						var appended = hammerDownStream.append.getCall(0).args[0];
-						appended.should.be.eql(expected);
+						var appendedPrefix = hammerDownStream.appendWithPrefix.getCall(0).args[0];
+						appendedPrefix.should.be.eql(expectedPrefix);
 					});
 				});
 			});

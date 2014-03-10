@@ -28,7 +28,7 @@ describe("When wrting markdown",function() {
 	describe("When appending header marker",function() {		
 		it("Should append header marker",function(){
 			hammerDown.headerMarker();
-			var expected = '\n\n---\n\n';	
+			var expected = '---\n\n';	
 
 			var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
 			appended.should.be.eql(expected);

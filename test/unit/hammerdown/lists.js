@@ -20,7 +20,7 @@ describe("When wrting markdown",function() {
 			describe("When list depth is 0",function() {
 				it("Should append paragraph",function(){
 					hammerDown.listOpen();
-					var expected = '\n\n';
+					var expected = '';
 
 					var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
 					appended.should.be.eql(expected);
@@ -31,7 +31,7 @@ describe("When wrting markdown",function() {
 				it("Should append newline",function(){
 					hammerDown.writerState.incrementListDepth();
 					hammerDown.listOpen();
-					var expected = '\n';
+					var expected = '';
 
 					var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
 					appended.should.be.eql(expected);
@@ -44,7 +44,7 @@ describe("When wrting markdown",function() {
 			describe("When list depth is 0",function() {
 				it("Should append paragraph",function(){
 					hammerDown.listOpen();
-					var expected = '\n\n';
+					var expected = '';
 
 					var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
 					appended.should.be.eql(expected);
@@ -55,7 +55,7 @@ describe("When wrting markdown",function() {
 				it("Should append newline",function(){
 					hammerDown.writerState.incrementListDepth();
 					hammerDown.listOpen();
-					var expected = '\n';
+					var expected = '';
 
 					var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
 					appended.should.be.eql(expected);
@@ -116,7 +116,7 @@ describe("When wrting markdown",function() {
 	describe("When closed list item",function() {
 		it("Should append new line",function(){
 			hammerDown.listItemClose();
-			var expected = '\n';
+			var expected = '';
 
 			var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
 			appended.should.be.eql(expected);

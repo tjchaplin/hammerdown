@@ -18,7 +18,7 @@ describe("When wrting markdown",function() {
 		describe("When appending an open header",function() {
 			it("Should append header",function(){
 				hammerDown.headerOpen();
-				var expected = '\n\n# ';	
+				var expected = '# ';	
 
 				var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
 				appended.should.be.eql(expected);
@@ -28,7 +28,7 @@ describe("When wrting markdown",function() {
 				it("Should append header",function(){
 					var level = 2;
 					hammerDown.headerOpen(level);
-					var expected = '\n\n## ';	
+					var expected = '## ';	
 
 					var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
 					appended.should.be.eql(expected);
@@ -38,7 +38,7 @@ describe("When wrting markdown",function() {
 		describe("When appending a close quote",function() {		
 			it("Should append backtick",function(){
 				hammerDown.headerClose();
-				var expected = '\n\n';
+				var expected = '';
 
 				var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
 				appended.should.be.eql(expected);

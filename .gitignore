@@ -13,5 +13,6 @@ results
 
 npm-debug.log
 node_modules
-test/integration/fixtures/actual
+test/integration/hammerdown/fixtures/actual
+test/integration/githubFlavoredHammerDown/fixtures/actual
 .DS_Store

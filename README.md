@@ -98,3 +98,25 @@ hammerDown.readableStream().pipe(process.stdout);
 //	|---|---|
 //	|row1-col1|row1-col2|
 ```
+
+## Fenced Code Block
+```javascript
+var hammerdown = require("hammerdown").githubFlavoredHammerDown;
+
+//Write markdown
+hammerDown.blockCodeOpen()
+				.codeOpen()
+				.text("function myFunction(params){\n\treturn true;\n};\n")
+				.codeClose()
+			.blockCodeClose()
+		.done();
+
+hammerDown.readableStream().pipe(process.stdout);
+
+//Outputs
+// ```javascript
+// function myFunction(params){
+//	return true;
+// };
+// ```
+```

@@ -17,10 +17,10 @@ describe("When wrting markdown",function() {
 	});
 	describe("When appending text",function(){
 		describe("When not in a block quote or block code",function() {			
-			describe("When text only contains non-words or numbers",function() {
+			describe("When text only contains newlines",function() {
 				it("Should not append",function(){
 					hammerDown.writerState.inCode();
-					var data = ' \n \t  \n\r\n';
+					var data = '\n\n\n';
 					var expected = '';
 					
 					hammerDown.text(data);

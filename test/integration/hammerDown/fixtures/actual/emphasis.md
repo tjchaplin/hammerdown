@@ -1,1 +1,1 @@
-*single asterisks*** bold text**
+*single asterisks* **bold text**

@@ -17,8 +17,9 @@ describe("When using hammerdown",function() {
 			hammerDown.emphasisOpen()
 						.text("single asterisks")
 						.emphasisClose()
+						.text(" ")
 						.boldOpen()
-						.text(" bold text")
+						.text("bold text")
 						.boldClose()
 					.done();
 

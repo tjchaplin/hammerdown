@@ -4,8 +4,57 @@ var fixtureUtils = require('./fixtureUtils');
 var HammerDown = require('../../../lib/hammerDown');
 
 
-describe("When using hammerdown",function() {
+describe("When using blockquotes",function() {
 	var resultDirectory =fixtureUtils.createTestDirectory();
+
+	// describe("When blockquotes contain markup",function() {
+	// 	describe("When using header markup",function() {
+	// 		it("Should match expected",function(done){
+	// 			var testFixture = "innerBlockquote.md";
+	// 			var resultFile = resultDirectory+"/"+testFixture;
+	// 			fileOutput = fs.createWriteStream(resultFile);
+	// 			var hammerDown = new HammerDown();
+
+	// 			hammerDown.blockQuoteOpen()
+	// 						.text("blockquote line 1")
+	// 						.blockQuoteOpen()
+	// 							.text("blockquote inner line 1")
+	// 							.blockQuoteOpen()
+	// 								.text("\n\nblockquote inner inner line 1")
+	// 							.blockQuoteClose()
+	// 						.blockQuoteClose()
+	// 					.blockQuoteClose()
+	// 					.done();
+
+	// 			var writeStream = hammerDown.readableStream().pipe(fileOutput);
+	// 			writeStream.on('close',function(){
+	// 				fixtureUtils.assertActualEqualsExpected(testFixture);
+	// 				done();
+	// 			});			
+	// 		});
+	// 	});
+	// });
+	describe("When appending blockquotes on same line",function() {
+		it("Should match expected",function(done){
+			var testFixture = "blockquoteWithMultilineText.md";
+			var resultFile = resultDirectory+"/"+testFixture;
+			fileOutput = fs.createWriteStream(resultFile);
+			var hammerDown = new HammerDown();
+
+			hammerDown.blockQuoteOpen()
+						.text("blockquote word 1 ")
+						.text("blockquote word 2")
+					.blockQuoteClose()
+					.done();
+
+			var writeStream = hammerDown.readableStream().pipe(fileOutput);
+			writeStream.on('close',function(){
+				fixtureUtils.assertActualEqualsExpected(testFixture);
+				done();
+			});			
+		});
+	});
+
 	describe("When outputing blockquote text starting with newlines",function() {
 		it("Should match expected",function(done){
 			var testFixture = "blockquoteStartingWithNewlines.md";
@@ -75,7 +124,7 @@ describe("When using hammerdown",function() {
 						.blockQuoteOpen()
 							.text("blockquote inner line 1")
 							.blockQuoteOpen()
-								.text("\n\nblockquote inner inner line 1")
+								.text("\nblockquote inner inner line 1")
 							.blockQuoteClose()
 						.blockQuoteClose()
 					.blockQuoteClose()

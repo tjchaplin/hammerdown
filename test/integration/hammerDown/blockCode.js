@@ -75,7 +75,7 @@ describe("When using hammerdown",function() {
 						.blockCodeOpen()
 							.text("block code inner line 1")
 							.blockCodeOpen()
-								.text("\n\nblock code inner inner line 1")
+								.text("\nblock code inner inner line 1")
 							.blockCodeClose()
 						.blockCodeClose()
 					.blockCodeClose()

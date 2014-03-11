@@ -34,10 +34,10 @@ describe("When wrting markdown",function() {
 			appended.should.be.eql(expected);
 		});
 	});
-	describe("When appending paragraph",function() {		
-		it("Should append two new lines",function(){
+	describe("When appending paragraph at start of a document",function() {		
+		it("Should append a new line",function(){
 			hammerDown.paragraph();
-			var expected = '\n\n';	
+			var expected = '';	
 
 			var appended = hammerDownStream.appendRaw.getCall(0).args[0];
 			appended.should.be.eql(expected);

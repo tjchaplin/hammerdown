@@ -1,5 +1,4 @@
 > Text Before
 > 
 > 
-> 
 > Text After

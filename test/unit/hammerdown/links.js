@@ -15,7 +15,31 @@ describe("When wrting markdown",function() {
 		sinon.spy(hammerDownStream,'appendFormatted');
 	});
 
-	describe("When appending link",function() {		
+	describe("When appending link",function() {	
+		describe("when appending a mailto link",function(){
+			describe("When appending an open link",function() {		
+				it("Should append greater than",function(){
+					hammerDown.linkOpen({href:"mailto:any@any.com"});
+					var expected = '<';
+
+					var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
+					appended.should.be.eql(expected);
+				});
+			});
+			describe("When appending a close link",function() {		
+				it("Should append greater than",function(){
+					var linkDefinition = {
+						href:"mailto:any@any.com"
+					};
+					hammerDown.writerState.saveLinkDefinition(linkDefinition);
+					hammerDown.linkClose();
+					var expected = '>';
+
+					var appended = hammerDownStream.appendFormatted.getCall(0).args[0];
+					appended.should.be.eql(expected);
+				});
+			});
+		})
 		describe("When appending an open link",function() {		
 			it("Should append start bracket",function(){
 				hammerDown.linkOpen();

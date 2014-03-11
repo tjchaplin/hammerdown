@@ -131,5 +131,26 @@ describe("When using hammerdown to add links",function() {
 			});			
 		});
 	});
-	
+	describe("When outputing link with mailto information",function() {
+		it("Should match expected",function(done){
+			var testFixture = "linkWithMailTo.md";
+			var resultFile = resultDirectory+"/"+testFixture;
+			fileOutput = fs.createWriteStream(resultFile);
+			var hammerDown = new HammerDown();
+
+			var linkDefinition = {
+				href : 'mailto:any@any.com'
+			};
+			hammerDown.linkOpen(linkDefinition)
+							.text("any@any.com")
+						.linkClose()
+						.done();
+
+			var writeStream = hammerDown.readableStream().pipe(fileOutput);
+			writeStream.on('close',function(){
+				fixtureUtils.assertActualEqualsExpected(testFixture);
+				done();
+			});			
+		});
+	});
 });

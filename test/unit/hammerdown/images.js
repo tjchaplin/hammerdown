@@ -54,5 +54,15 @@ describe("When wrting markdown",function() {
 				appended.should.be.eql(expected);
 			});
 		});
+		describe("When image definition title and source specified",function() {
+			it("Should append image with title and source definition",function(){
+				var imageDefinition = {src:"/someSource.png",alt:"some alt",title: "some title"};
+				hammerDown.image(imageDefinition);
+				var expected = '![some alt](/someSource.png \"some title\")';	
+
+				var appended = hammerDownStream.append.getCall(0).args[0];
+				appended.should.be.eql(expected);
+			});
+		});
 	});
 });

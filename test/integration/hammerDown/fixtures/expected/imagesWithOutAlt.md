@@ -1,1 +1,0 @@
-![](/someSource.png)

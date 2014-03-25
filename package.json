@@ -47,5 +47,10 @@
     "gulp-util": "~2.2.14",
     "gulp-mocha": "~0.4.1",
     "sinon": "~1.8.2"
+  },
+  "dependencies": {
+    "through": "~2.3.4",
+    "sax": "~0.6.0",
+    "trumpet": "~1.6.3"
   }
 }

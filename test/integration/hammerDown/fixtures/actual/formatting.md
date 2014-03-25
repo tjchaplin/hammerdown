@@ -1,6 +1,0 @@
----
-
-someText  
-someMoreText
-
-someAdditionalText

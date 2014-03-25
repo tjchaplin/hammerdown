@@ -6,7 +6,13 @@ var jshint = require('gulp-jshint');
 gulp.task('default', ['lint','test']);
 
 gulp.task('watch', function() {
-    gulp.watch(['test/**', 'lib/**','!**/*.md'], ["lint","catchErrorTest"]);
+    gulp.watch(['test/**', 'lib/**'], ["lint"])
+});
+
+gulp.task('catchErrorTest',function(){
+    gulp.src(['test/**/*.js'])
+        .pipe(mocha({ reporter: 'list' }))
+        .on('error', gutil.log);
 });
 
 gulp.task('lint', function() {
@@ -16,20 +22,16 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('catchErrorTest',function(){
-    gulp.src(['test/**/*.js'])
-        .pipe(mocha({ reporter: 'list' }))
-        .on('error', gutil.log);
-});
-
 gulp.task('test',["unitTest","integrationTest"]);
 
 gulp.task('unitTest',function(){
     gulp.src(['test/unit/**/*.js'])
-        .pipe(mocha({ reporter: 'spec' }));
+        .pipe(mocha({ reporter: 'spec' }))
+        .on('error', gutil.log);
 });
 
 gulp.task('integrationTest',function(){
     gulp.src(['test/integration/**/*.js'])
-        .pipe(mocha({ reporter: 'spec' }));
+        .pipe(mocha({ reporter: 'spec' }))
+        .on('error', gutil.log);
 })

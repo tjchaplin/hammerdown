@@ -29,7 +29,7 @@ describe("When something",function(){
 		// var stream = stringToStream("<blockquote><ol><li>Item1</li><li><p>Item3 aldf<blockquote><ul><li>unorderedItem<ol><li>sub ordered list</li></ol></li></ul></blockquote> </li></ol></blockquote>");
 		// var stream = stringToStream("<blockquote><p>before</p></blockquote>");
 
-		var stream = stringToStream("<ul><li>item1<blockquote>item2</blockquote></li><li>item3</li><li><ul><li>subitem1</li><li>dddd\nsubitem2</li><li><ul><li>inner inner\nalsdfjdsf</li></ul></li></ul></li><li>item4</li></ul>");
+		var stream = stringToStream("<ul><li><p>item1</p><blockquote><p>item2</p></blockquote></li></ul>");
 		//var stream = stringToStream("<li>Any <p><p>Item1</p>\n\nadsfasd\n</p></li><li><h1>Any Item2</h1>\n\nadsfasd\n</li>");
 		//var stream = stringToStream("<li>Any Item1\n\nadsfasd</li><li><h1>Any Item2</h1><li>Inner listItem\n\nasdfsd</li></li>");
 		// var stream = stringToStream("<ul><li><p>a list containing a blockquote</p><blockquote><p>this the blockquote in the list</p></blockquote></li></ul>");

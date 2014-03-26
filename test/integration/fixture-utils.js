@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var should = require('should');
 
 module.exports.createTestDirectory = function(){
 	var resultDirectory = __dirname+"/markdown-testsuite-actual";

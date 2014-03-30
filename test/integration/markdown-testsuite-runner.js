@@ -16,67 +16,66 @@ var forEachTestFixture = function(testDirectory,onTestFixture){
 	}
 };
 
-// describe("When converting html to markdown", function(){
-// 	var resultDirectory =fixtureUtils.createTestDirectory();
-// 	forEachTestFixture(__dirname+'/markdown-testsuite/tests',function(testFixture){
-// 		it("Then should be able to generate the expected markdown for "+testFixture, function(done) {
-// 			var resultFile = resultDirectory+"/"+testFixture+".md";
-// 			var fileOutput = fs.createWriteStream(resultFile);
+describe("When converting html to markdown", function(){
+	var resultDirectory =fixtureUtils.createTestDirectory();
+	forEachTestFixture(__dirname+'/markdown-testsuite/tests',function(testFixture){
+		it("Then should be able to generate the expected markdown for "+testFixture, function(done) {
+			var resultFile = resultDirectory+"/"+testFixture+".md";
+			var fileOutput = fs.createWriteStream(resultFile);
 
-// 			var htmlFile = __dirname+"/markdown-testsuite/tests/"+testFixture+".out";
-// 			var htmlStream = fs.createReadStream(htmlFile);
+			var htmlFile = __dirname+"/markdown-testsuite/tests/"+testFixture+".out";
+			var htmlStream = fs.createReadStream(htmlFile);
 
-// 			var hammerdown = new Hammerdown();
-// 			var writeStream = htmlStream.pipe(hammerdown).pipe(fileOutput);
-// 			writeStream.on('close',function(){
-// 				fixtureUtils.assertActualEqualsExpected(testFixture);
-// 				done();
-// 			});
-// 		});
-// 	});
-// });
+			var hammerdown = new Hammerdown();
+			var writeStream = htmlStream.pipe(hammerdown).pipe(fileOutput);
+			writeStream.on('close',function(){
+				fixtureUtils.assertActualEqualsExpected(testFixture);
+				done();
+			});
+		});
+	});
+});
 
-// var isIgnored = function(ignoredTests, test){
-// 	for (var i = 0; i < ignoredTests.length; i++) {
-// 		if(ignoredTests[i] == test)
-// 			return true;
-// 	}	
-// 	return false;
-// }
-// describe("When converting html to github flavored markdown", function(){
-// 	var resultDirectory =fixtureUtils.createTestDirectory();
-// 	var githubFlavoredMarkdownIgnoredTests = [
-// 	'code-4-spaces-escaping',
-// 	'code-4-spaces',
-// 	'list-code'
-// 	]
-// 	forEachTestFixture(__dirname+'/markdown-testsuite/tests',function(testFixture){
-// 		if(isIgnored(githubFlavoredMarkdownIgnoredTests,testFixture))
-// 			return;
+var isIgnored = function(ignoredTests, test){
+	for (var i = 0; i < ignoredTests.length; i++) {
+		if(ignoredTests[i] == test)
+			return true;
+	}	
+	return false;
+}
+describe("When converting html to github flavored markdown", function(){
+	var resultDirectory =fixtureUtils.createTestDirectory();
+	var githubFlavoredMarkdownIgnoredTests = [
+	'code-4-spaces-escaping',
+	'code-4-spaces',
+	'list-code'
+	]
+	forEachTestFixture(__dirname+'/markdown-testsuite/tests',function(testFixture){
+		if(isIgnored(githubFlavoredMarkdownIgnoredTests,testFixture))
+			return;
 
-// 		it("Then should be able to generate the expected markdown for "+testFixture, function(done) {
-// 			var resultFile = resultDirectory+"/"+testFixture+".md";
-// 			var fileOutput = fs.createWriteStream(resultFile);
+		it("Then should be able to generate the expected markdown for "+testFixture, function(done) {
+			var resultFile = resultDirectory+"/"+testFixture+".md";
+			var fileOutput = fs.createWriteStream(resultFile);
 
-// 			var htmlFile = __dirname+"/markdown-testsuite/tests/"+testFixture+".out";
-// 			var htmlStream = fs.createReadStream(htmlFile);
+			var htmlFile = __dirname+"/markdown-testsuite/tests/"+testFixture+".out";
+			var htmlStream = fs.createReadStream(htmlFile);
 
-// 			var hammerdown = new Hammerdown({type:'gfm'});
-// 			var writeStream = htmlStream.pipe(hammerdown).pipe(fileOutput);
-// 			writeStream.on('close',function(){
-// 				fixtureUtils.assertActualEqualsExpected(testFixture);
-// 				done();
-// 			});
-// 		});
-// 	});
-// });
+			var hammerdown = new Hammerdown({type:'gfm'});
+			var writeStream = htmlStream.pipe(hammerdown).pipe(fileOutput);
+			writeStream.on('close',function(){
+				fixtureUtils.assertActualEqualsExpected(testFixture);
+				done();
+			});
+		});
+	});
+});
 
 describe("When converting html to github flavored markdown", function(){
 	var resultDirectory =fixtureUtils.createTestDirectory();
 
 	forEachTestFixture(__dirname+'/markdown-testsuite/tests/extensions/gfm',function(testFixture){
-		if(testFixture !== 'fenced-code-block-with-backticks')
-			return;
+
 		it("Then should be able to generate the expected markdown for "+testFixture, function(done) {
 			var resultFile = resultDirectory+"/"+testFixture+".md";
 			var fileOutput = fs.createWriteStream(resultFile);

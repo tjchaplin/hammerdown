@@ -34,7 +34,8 @@ describe("When something",function(){
 		//var stream = stringToStream("<li>Any Item1\n\nadsfasd</li><li><h1>Any Item2</h1><li>Inner listItem\n\nasdfsd</li></li>");
 		// var stream = stringToStream("<ul><li><p>a list containing a blockquote</p><blockquote><p>this the blockquote in the list</p></blockquote></li></ul>");
 		//var stream = stringToStream("<ul><li>item1</li><li><blockquote><p>item1</p></blockquote></li></ul>");
-		var stream = stringToStream("<pre><code class='language-javascript'>asdfsdfsadf\nadslfkjasdf\naldkfjasldfj\nalsdfkjasdf<pre><code>adsfsdfas</code></pre></code></pre>");
+		//var stream = stringToStream("<pre><code class='language-javascript'>asdfsdfsadf\nadslfkjasdf\naldkfjasldfj\nalsdfkjasdf<pre><code>adsfsdfas</code></pre></code></pre>");
+		var stream = stringToStream("<table><tr><th>Header1</th><th>Header2</th></tr><tr><td>tableData</td></tr></table>");
 		var hammerdown = new Hammerdown({type:'gfm'});
 
 		var fileStream = fs.createWriteStream('./test.md');

@@ -29,12 +29,13 @@ describe("When something",function(){
 		// var stream = stringToStream("<blockquote><ol><li>Item1</li><li><p>Item3 aldf<blockquote><ul><li>unorderedItem<ol><li>sub ordered list</li></ol></li></ul></blockquote> </li></ol></blockquote>");
 		// var stream = stringToStream("<blockquote><p>before</p></blockquote>");
 
-		var stream = stringToStream("<ul><li><p>item1</p><blockquote><p>item2</p></blockquote></li></ul>");
+		//var stream = stringToStream("<ul><li><p>item1</p><blockquote><p>item2</p></blockquote></li></ul>");
 		//var stream = stringToStream("<li>Any <p><p>Item1</p>\n\nadsfasd\n</p></li><li><h1>Any Item2</h1>\n\nadsfasd\n</li>");
 		//var stream = stringToStream("<li>Any Item1\n\nadsfasd</li><li><h1>Any Item2</h1><li>Inner listItem\n\nasdfsd</li></li>");
 		// var stream = stringToStream("<ul><li><p>a list containing a blockquote</p><blockquote><p>this the blockquote in the list</p></blockquote></li></ul>");
 		//var stream = stringToStream("<ul><li>item1</li><li><blockquote><p>item1</p></blockquote></li></ul>");
-		var hammerdown = new Hammerdown();
+		var stream = stringToStream("<pre><code class='language-javascript'>asdfsdfsadf\nadslfkjasdf\naldkfjasldfj\nalsdfkjasdf<pre><code>adsfsdfas</code></pre></code></pre>");
+		var hammerdown = new Hammerdown({type:'gfm'});
 
 		var fileStream = fs.createWriteStream('./test.md');
 		stream.pipe(hammerdown)

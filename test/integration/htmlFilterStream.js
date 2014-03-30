@@ -1,7 +1,7 @@
 var should = require('should');
 var concat = require('concat-stream');
 var Readable = require('stream').Readable;
-var HtmlFilterStream = require('../../lib/utils/htmlFilterStream');
+var HtmlFilterStream = require('../../lib/htmlParser/htmlFilterStream');
 
 var stringToStream = function(string){
 	var rs = new Readable();

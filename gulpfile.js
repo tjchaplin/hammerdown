@@ -22,7 +22,7 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('test',["unitTest","integrationTest"]);
+gulp.task('test',["unitTest","bddTest"]);
 
 gulp.task('unitTest',function(){
     gulp.src(['test/unit/**/*.js'])
@@ -30,8 +30,8 @@ gulp.task('unitTest',function(){
         .on('error', gutil.log);
 });
 
-gulp.task('integrationTest',function(){
-    gulp.src(['test/integration/**/*.js'])
+gulp.task('bddTest',function(){
+    gulp.src(['test/spec/**/*.js'])
         .pipe(mocha({ reporter: 'spec' }))
         .on('error', gutil.log);
 })

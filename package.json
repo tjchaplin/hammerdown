@@ -1,8 +1,8 @@
 {
   "name": "hammerdown",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "main": "index.js",
-  "description": "Streaming Markdown Writer",
+  "description": "Streaming HTML To Markdown Writer",
   "homepage": "https://github.com/tjchaplin/hammerdown",
   "author": {
     "name": "tjchaplin",
@@ -31,8 +31,13 @@
     "test": "gulp test"
   },
   "keywords": [
+    "html",
     "markdown",
     "md",
+    "tomarkdown",
+    "html-md",
+    "converter",
+    "hammerdown",
     "stream",
     "converter",
     "hammer",

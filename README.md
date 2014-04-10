@@ -85,6 +85,10 @@ To have an easy way to programatically generate a stream of markdown text from h
 
 Markdown is a mechanism to create documents. [See](http://daringfireball.net/projects/markdown/) for more details.  Hammerdown allows developers to leverage the simplicity of Markdown from html text.
 
+# Options
+
+Hammerdown currently accepts one option: `type`.  If `type` is `"gfm"` then hammerdown will produce markdown using github flavored markdown(gfm).
+
 # Examples
 
 Below is a select group of examples.  More examples can be found by looking at the integration tests.

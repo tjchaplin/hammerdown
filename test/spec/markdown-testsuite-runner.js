@@ -42,14 +42,15 @@ var isIgnored = function(ignoredTests, test){
 			return true;
 	}	
 	return false;
-}
+};
+
 describe("When converting html to github flavored markdown", function(){
 	var resultDirectory =fixtureUtils.createTestDirectory();
 	var githubFlavoredMarkdownIgnoredTests = [
-	'code-4-spaces-escaping',
-	'code-4-spaces',
-	'list-code'
-	]
+		'code-4-spaces-escaping',
+		'code-4-spaces',
+		'list-code'
+		];
 	forEachTestFixture(__dirname+'/markdown-testsuite/tests',function(testFixture){
 		if(isIgnored(githubFlavoredMarkdownIgnoredTests,testFixture))
 			return;

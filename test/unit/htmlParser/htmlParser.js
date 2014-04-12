@@ -16,7 +16,6 @@ describe("When parsing an html file",function(){
 				assert(depthData.length === 4);
 			});
 			it("tagdepth should emit in correct sequence",function(){
-				console.log(depthData);
 				var expectedDepthData = [1,0,1,0];
 				for (var i = 0; i < expectedDepthData.length; i++) {
 					assert(expectedDepthData[i] === depthData[i]);

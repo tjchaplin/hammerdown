@@ -7,5 +7,5 @@ describe('When using hammerdown with a string',function(){
 		hammerdown().parse('<h1>Header</h1>').pipe(concat(function(data){
 			assert(data == '# Header');
 		}));
-	})
+	});
 });

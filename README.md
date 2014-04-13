@@ -81,9 +81,20 @@ npm install hammerdown
 
 # Purpose 
 
+Existing html to markdown writers didn't:
+* Support windows *easily*([html.md](https://github.com/neocotic/html.md)
+* Lack of support for github flavored markdown ([to-markdown](https://github.com/domchristie/to-markdown))
+* Didn't support streams 
+
+## Whey convert html to markdown?
+
 To have an easy way to programatically generate a stream of markdown text from html.  This library includes a converters for standard markdown and it also includes [Github-Flavored-Markdown](https://help.github.com/articles/github-flavored-markdown) definitions.  Some of the other libraries that exist, don't provide full features for github-flavored-markdown, and didn't produce streams.
 
 Markdown is a mechanism to create documents. [See](http://daringfireball.net/projects/markdown/) for more details.  Hammerdown allows developers to leverage the simplicity of Markdown from html text.
+
+# Gulp Plugin!
+
+For adding to your build process checkout [gulp-hammerdown](https://github.com/tjchaplin/gulp-hammerdown)
 
 # Options
 
@@ -186,3 +197,7 @@ htmlFileStream.pipe(hammerdown({type:"gfm"})).pipe(process.stdout);
 	</body>
 </html>
 ```
+
+# Credits
+
+* Thanks to [karlcows Markdown Test Runner](https://github.com/karlcow/markdown-testsuite) I was able to provide a solid set of tests

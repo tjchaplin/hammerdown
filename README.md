@@ -45,7 +45,7 @@ hammerdown({type:"gfm"}).parse(htmlString).pipe(process.stdout);
 ## Simple Example using file stream
 
 ```javascript
-var fs = require('fs')
+var fs = require('fs');
 var hammerdown = require('hammerdown');
 
 var htmlFileStream = fs.createReadStream("anyHtmlFile.html");

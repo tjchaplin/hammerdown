@@ -98,7 +98,7 @@ For adding to your build process checkout [gulp-hammerdown](https://github.com/t
 
 # Options
 
-Hammerdown currently accepts one option: `type`.  If `type` is `"gfm"` then hammerdown will produce markdown using github flavored markdown(gfm).
+Hammerdown currently accepts one option: `type`.  If `type` is `"gfm"` then hammerdown will produce markdown using github flavored markdown (gfm). `type` defaults to `false`.
 
 # Examples
 

@@ -82,7 +82,7 @@ npm install hammerdown
 # Purpose 
 
 Existing html to markdown writers didn't:
-* Support windows *easily*([html.md](https://github.com/neocotic/html.md)
+* Support windows *easily* ([html.md](https://github.com/neocotic/html.md))
 * Lack of support for github flavored markdown ([to-markdown](https://github.com/domchristie/to-markdown))
 * Didn't support streams 
 

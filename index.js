@@ -1,1 +1,1 @@
-module.exports = require("./lib/hammerDown.js");
+module.exports = require("./lib/hammerdown.js");

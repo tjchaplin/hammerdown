@@ -19,8 +19,7 @@ describe("When parsing an html file",function(){
 				var expectedDepthData = [1,0,1,0];
 				for (var i = 0; i < expectedDepthData.length; i++) {
 					assert(expectedDepthData[i] === depthData[i]);
-				};
-				
+				}
 			});
 		});
 	});

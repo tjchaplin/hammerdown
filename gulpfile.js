@@ -31,7 +31,7 @@ gulp.task('unitTest',function(){
 });
 
 gulp.task('bddTest',function(){
-    gulp.src(['test/spec/**/*.js'])
+    gulp.src(['test/spec/markdown-testsuite-runner.js'])
         .pipe(mocha({ reporter: 'spec' }))
         .on('error', gutil.log);
 })

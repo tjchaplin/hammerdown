@@ -4,5 +4,4 @@
 function noop(){
 	return true;
 }
-```</code>
-</pre>
+```</code></pre>

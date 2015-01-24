@@ -32,7 +32,7 @@ module.exports.assertActualEqualsExpected = function(fixtureName){
 	var actualFile =  __dirname+"/markdown-testsuite-actual/"+fixtureName+".md";
 	var expectedFile =  __dirname+"/markdown-testsuite/tests/"+fixtureName+".md";
 
-	var actualData = fs.readFileSync(actualFile, 'utf8').replace(/\r\n/g,'\n');
-	var expectedData = fs.readFileSync(expectedFile, 'utf8').replace(/\r\n/g,'\n');
+	var actualData = fs.readFileSync(actualFile, 'utf8').replace(/\r\n/g,'\n').replace(/\r/g,'');
+	var expectedData = fs.readFileSync(expectedFile, 'utf8').replace(/\r\n/g,'\n').replace(/\r/g,'');
 	actualData.should.be.eql(expectedData);
 };

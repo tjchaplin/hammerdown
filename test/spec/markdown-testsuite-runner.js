@@ -16,6 +16,14 @@ var forEachTestFixture = function(testDirectory,onTestFixture){
 	}
 };
 
+var isIgnored = function(ignoredTests, test){
+	for (var i = 0; i < ignoredTests.length; i++) {
+		if(ignoredTests[i] == test)
+			return true;
+	}	
+	return false;
+};
+
 describe("When converting html to markdown", function(){
 	var resultDirectory =fixtureUtils.createTestDirectory();
 	forEachTestFixture(__dirname+'/markdown-testsuite/tests',function(testFixture){
@@ -35,14 +43,6 @@ describe("When converting html to markdown", function(){
 		});
 	});
 });
-
-var isIgnored = function(ignoredTests, test){
-	for (var i = 0; i < ignoredTests.length; i++) {
-		if(ignoredTests[i] == test)
-			return true;
-	}	
-	return false;
-};
 
 describe("When converting html to github flavored markdown", function(){
 	var resultDirectory =fixtureUtils.createTestDirectory();

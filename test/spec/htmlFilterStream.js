@@ -27,7 +27,7 @@ describe("When using html filter",function(){
 		describe("When contains non visible elements with children",function(){
 			var htmlFilterStream = new HtmlFilterStream();
 
-			var stream = stringToStream("<div style='display:none'><h1>child1</h1><p><span>child2</span>Some Item</div>");
+			var stream = stringToStream("<div style='display:none'><h1>child1</h1><p><span>child2</span>Some Item</p></div>");
 
 			it("Should not stream children",function(done){
 				stream.pipe(htmlFilterStream).pipe(concat(function(data){

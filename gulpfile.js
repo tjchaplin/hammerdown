@@ -17,8 +17,6 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test',["lint","unitTest","bddTest"]);
-
 gulp.task('unitTest',function(){
     gulp.src(['test/unit/**/*.js'])
         .pipe(mocha({ reporter: 'spec' }));
@@ -29,6 +27,11 @@ gulp.task('bddTest',function(){
         .pipe(mocha({ reporter: 'spec' }));
 });
 
+gulp.task('test',['lint'],function(){
+    gulp.src(['test/**/*.js'])
+        .pipe(mocha({ reporter: 'spec' }))
+        .on('error', gutil.log);
+});
 gulp.task('test:local',['lint'],function(){
     gulp.src(['test/**/*.js'])
         .pipe(mocha({ reporter: 'spec' }))

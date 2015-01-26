@@ -7,13 +7,16 @@ Streaming html to markdown writer
 
 # Get Started
 
+Checkout The Live Demo [here!](http://tjchaplin.github.io/hammerdown/)
+
 ## Simple Example
 
 ```javascript
 var hammerdown = require("hammerdown");
 
 //Write markdown
-hammerdown().parse("<h1>A Markdown Header</h1><p>Some text <b>bold text</b></p>").pipe(process.stdout);
+hammerdown().parse("<h1>A Markdown Header</h1><p>Some text <b>bold text</b></p>")
+	.pipe(process.stdout);
 
 //Outputs
 //	# A Markdown Header

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hammerdown</title>
+	<link rel="stylesheet" type="text/css" href="bower_components\bootstrap\dist\css\bootstrap.min.css">
+	<style type="text/css">
+	html, body, .container-fluid {
+	  height: 100%;
+	}
+	.codeDisplay {
+		width: 100%;
+		height: 700px;
+	}
+	textarea {
+		resize:none;
+	}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	        Hammerdown - Streaming Html to markdown
+	      </a>
+	    </div>
+	  </div>
+	</nav>
+	<div class="container-fluid" style="margin-top:25px;">
+		<div class="row col-md-10 col-md-offset-1">
+			<div class="col-md-6">
+				<textarea class="codeDisplay" onkeyup="streamContent()"></textarea>
+			</div>
+			<div class="col-md-6">
+				<pre class="codeDisplay" id="markDownOutput"></pre>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript" src="bower_components\jquery\dist\jquery.min.js"></script>
+<script type="text/javascript" src="bower_components\bootstrap\dist\js\bootstrap.min.js"></script>
+<script type="text/javascript" src="bower_components\hammerdown\dist\hammerdown.min.js"></script>
+<script type="text/javascript">
+	var htmlContent = document.getElementsByTagName("TEXTAREA")[0];
+	var parseInput = function(){
+		hammerdown().parse(htmlContent.value,function(markdown){
+			var markdownContent = document.getElementById("markDownOutput");
+			markdownContent.innerHTML = markdown.toString();
+		});
+	};
+	htmlContent.value = "<!-- EDIT ME -->\n\n<h1> A header1 text </h1>\n\n"+
+		"<h2>Unordered List</h2>\n<ul>\n\t<li>item1</li>\n\t<li>item2</li>\n</ul>\n\n"+
+		"<h2>Ordered List</h2>\n<ol>\n\t<li>item1</li>\n\t<li>item2</li>\n</ol>\n\n"+
+		"<h1>Code</h1>\n\n"+
+		"<pre>\n<code>var awesomeThing = function(){};</code>\n</pre>\n\n"+
+		"<h1>Block Quote</h1>\n\n"+
+		"<blockquote>\n<p>A blockquote\non multiple lines\nlike this</p></blockquote>\n\n"+
+		"<h1>Your Turn!</h1>";
+	parseInput();
+	var streamContent = function(){
+		parseInput();
+	}
+</script>
+</body>
+</html>

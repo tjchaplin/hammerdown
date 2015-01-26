@@ -1,0 +1,29 @@
+{
+  "name": "hammerdown",
+  "main": "dist/hammerdown.js",
+  "version": "1.1.0",
+  "homepage": "https://github.com/tjchaplin/hammerdown",
+  "authors": [
+    "Tim Chaplin <tjchaplin@hotmail.com>"
+  ],
+  "description": "Streaming html to markdown",
+  "keywords": [
+    "stream",
+    "markdown",
+    "html",
+    "hammer",
+    "to",
+    "markdown",
+    "md",
+    "mark",
+    "pipe"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

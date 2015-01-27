@@ -1,7 +1,7 @@
 {
   "name": "hammerdown",
   "main": "dist/hammerdown.js",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "homepage": "https://github.com/tjchaplin/hammerdown",
   "authors": [
     "Tim Chaplin <tjchaplin@hotmail.com>"

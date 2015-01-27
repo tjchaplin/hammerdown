@@ -25,11 +25,11 @@
     "test",
     "tests"
   ],
-  "_release": "300e2238cd",
+  "_release": "c4566216cf",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "300e2238cd7f3c24b7add8dc559f4449b4d9bae1"
+    "commit": "c4566216cf6781e928f801ce0d518d8f983a1f50"
   },
   "_source": "git://github.com/tjchaplin/hammerdown.git",
   "_target": "*",

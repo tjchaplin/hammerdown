@@ -24,7 +24,9 @@
 	        Hammerdown - Streaming Html to markdown
 	      </a>
 	    </div>
+		<p class="navbar-text navbar-right"><a href="http://github.com/tjchaplin/hammerdown" class="navbar-link">View Source on GitHub</a></p>
 	  </div>
+
 	</nav>
 	<div class="container-fluid col-md-10 col-md-offset-1" style="margin-top:25px;">
 		<div class="row ">
@@ -51,8 +53,14 @@
 <script type="text/javascript">
 	var htmlContent = document.getElementsByTagName("TEXTAREA")[0];
 	var parseInput = function(options){
-		hammerdown(options).parse(htmlContent.value,function(markdown){
+		hammerdown(options).parse(htmlContent.value,function(error, markdown){
 			var markdownContent = document.getElementById("markDownOutput");
+
+			if(error) {
+				markdownContent.innerHTML = error;
+				return;
+			}
+
 			markdownContent.innerHTML = markdown.toString();
 		});
 	};
@@ -74,8 +82,6 @@
 				this._htmlContent.value = this._markdownHtml;
 				this._parseOption = null;
 			}
-			console.log(this._parseOption)
-			console.log(this._selectOption.value)
 			parseInput(this._parseOption);
 		},
 		changeContentValue : function(){

@@ -7,19 +7,75 @@ Streaming html to markdown writer
 
 # Get Started
 
+Checkout The Live Demo [here!](http://tjchaplin.github.io/hammerdown/)
+
 ## Simple Example
 
 ```javascript
 var hammerdown = require("hammerdown");
 
-//Write markdown
-hammerdown().parse("<h1>A Markdown Header</h1><p>Some text <b>bold text</b></p>").pipe(process.stdout);
+//HTML
+var htmlToConvert = = "<h1>A Markdown Header</h1><p>Some text <b>bold text</b></p>"
+
+//Write markdown 
+hammerdown().parse(htmlToConvert,function(error, markdown){
+	if(error) 
+		throw error;
+
+	console.log(markdown);
+});
 
 //Outputs
 //	# A Markdown Header
 //
 //	Some text **bold text**
 ```
+
+## Simple Example with streams
+
+```javascript
+var hammerdown = require("hammerdown");
+
+//HTML
+var htmlToConvert = = "<h1>A Markdown Header</h1><p>Some text <b>bold text</b></p>"
+
+//Write markdown
+hammerdown().parse(htmlToConvert).pipe(process.stdout);
+
+//Outputs
+//	# A Markdown Header
+//
+//	Some text **bold text**
+```
+
+# Installation
+
+## npm Install
+
+```
+npm install hammerdown
+```
+
+## Browser Install
+
+```
+bower install hammerdown
+```
+
+NOTE: If using in the browser use the following:
+
+```javascript
+//HTML
+var htmlToConvert = = "<h1>A Markdown Header</h1><p>Some text <b>bold text</b></p>"
+
+hammerdown().parse(htmlToConvert,function(error, markdown){
+	if(error) 
+		throw error;
+
+	console.log(markdown);
+});
+```
+
 
 ## Github Flavored Markdown Example
 
@@ -42,43 +98,6 @@ hammerdown({type:"gfm"}).parse(htmlString).pipe(process.stdout);
 //	```
 ```
 
-## Simple Example using file stream
-
-```javascript
-var fs = require('fs');
-var hammerdown = require('hammerdown');
-
-var htmlFileStream = fs.createReadStream("anyHtmlFile.html");
-
-//Output markdown
-htmlFileStream.pipe(hammerdown()).pipe(process.stdout);
-
-//Outputs
-//  # Any header	
-//  
-//  Any **Content**
-```
-
-```
-<!-- anyHtmlFile.html-->
-<!doctype html>
-<html>
-<head>
-	<title>Any Title</title>
-</head>
-<body>
-	<h1>Any header</h1>
-	<p>Any <b>Content</b></p>
-</body>
-</html>
-```
-
-# Install
-
-```
-npm install hammerdown
-```
-
 # Purpose 
 
 Existing html to markdown writers didn't:
@@ -86,9 +105,9 @@ Existing html to markdown writers didn't:
 * Lack of support for github flavored markdown ([to-markdown](https://github.com/domchristie/to-markdown))
 * Didn't support streams 
 
-## Whey convert html to markdown?
+## Why convert html to markdown?
 
-To have an easy way to programatically generate a stream of markdown text from html.  This library includes a converters for standard markdown and it also includes [Github-Flavored-Markdown](https://help.github.com/articles/github-flavored-markdown) definitions.  Some of the other libraries that exist, don't provide full features for github-flavored-markdown, and didn't produce streams.
+To have an easy way to programatically generate a stream of markdown text from html.  This library includes converters for standard markdown and it also includes [Github-Flavored-Markdown](https://help.github.com/articles/github-flavored-markdown) definitions.
 
 Markdown is a mechanism to create documents. [See](http://daringfireball.net/projects/markdown/) for more details.  Hammerdown allows developers to leverage the simplicity of Markdown from html text.
 
@@ -106,7 +125,39 @@ Below is a select group of examples.  More examples can be found by looking at t
 
 # Github Flavored Markdown Examples
 
+## Simple Example using file stream
+
+```javascript
+var fs = require('fs');
+var hammerdown = require('hammerdown');
+
+var htmlFileStream = fs.createReadStream("anyHtmlFile.html");
+
+//Output markdown
+htmlFileStream.pipe(hammerdown()).pipe(process.stdout);
+
+//Outputs
+//  # Any header	
+//  
+//  Any **Content**
+```
+
+```html
+<!-- anyHtmlFile.html-->
+<!doctype html>
+<html>
+<head>
+	<title>Any Title</title>
+</head>
+<body>
+	<h1>Any header</h1>
+	<p>Any <b>Content</b></p>
+</body>
+</html>
+```
+
 ## Tables
+
 ```javascript
 var fs = require('fs')
 var hammerdown = require('hammerdown');
@@ -162,6 +213,7 @@ htmlFileStream.pipe(hammerdown({type:"gfm"})).pipe(process.stdout);
 ```
 
 ## Fenced Code Block
+
 ```javascript
 var fs = require('fs')
 var hammerdown = require('hammerdown');
@@ -198,6 +250,8 @@ htmlFileStream.pipe(hammerdown({type:"gfm"})).pipe(process.stdout);
 </html>
 ```
 
-# Credits
+# Credits and other frameworks
 
 * Thanks to [karlcows Markdown Test Runner](https://github.com/karlcow/markdown-testsuite) I was able to provide a solid set of tests
+
+* [to_markdown](https://github.com/domchristie/to-markdown) another good html to markdown tool by [domchristie](https://github.com/domchristie)

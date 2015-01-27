@@ -1,7 +1,7 @@
 {
   "name": "hammerdown",
   "main": "dist/hammerdown.js",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "homepage": "https://github.com/tjchaplin/hammerdown",
   "authors": [
     "Tim Chaplin <tjchaplin@hotmail.com>"
@@ -24,6 +24,11 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "spec",
+    "lib",
+    "gulpfile.js",
+    "index.js",
+    "package.json"
   ]
 }

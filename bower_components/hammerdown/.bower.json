@@ -23,13 +23,18 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "spec",
+    "lib",
+    "gulpfile.js",
+    "index.js",
+    "package.json"
   ],
-  "_release": "c4566216cf",
+  "_release": "7afa824680",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "c4566216cf6781e928f801ce0d518d8f983a1f50"
+    "commit": "7afa824680124d2541c1f2a16809b20720bfbdcb"
   },
   "_source": "git://github.com/tjchaplin/hammerdown.git",
   "_target": "*",

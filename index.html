@@ -26,10 +26,18 @@
 	    </div>
 	  </div>
 	</nav>
-	<div class="container-fluid" style="margin-top:25px;">
-		<div class="row col-md-10 col-md-offset-1">
+	<div class="container-fluid col-md-10 col-md-offset-1" style="margin-top:25px;">
+		<div class="row ">
+			<div class="col-md-6 col-md-offset-6">
+				<select onclick="contentHandler.changeMarkdownType()">
+					<option>Markdown</option>
+					<option>Github Flavored Markdown</option>
+				</select>
+			</div>
+		</div>
+		<div class="row " style="margin-top:5px;">
 			<div class="col-md-6">
-				<textarea class="codeDisplay" onkeyup="streamContent()"></textarea>
+				<textarea class="codeDisplay" onkeyup="contentHandler.changeContentValue()"></textarea>
 			</div>
 			<div class="col-md-6">
 				<pre class="codeDisplay" id="markDownOutput"></pre>
@@ -42,24 +50,56 @@
 <script type="text/javascript" src="bower_components\hammerdown\dist\hammerdown.min.js"></script>
 <script type="text/javascript">
 	var htmlContent = document.getElementsByTagName("TEXTAREA")[0];
-	var parseInput = function(){
-		hammerdown().parse(htmlContent.value,function(markdown){
+	var parseInput = function(options){
+		hammerdown(options).parse(htmlContent.value,function(markdown){
 			var markdownContent = document.getElementById("markDownOutput");
 			markdownContent.innerHTML = markdown.toString();
 		});
 	};
-	htmlContent.value = "<!-- EDIT ME -->\n\n<h1> A header1 text </h1>\n\n"+
+	
+	var contentHandler = {
+		_parseOption : null,
+		_selectOption : document.getElementsByTagName("SELECT")[0],
+		_htmlContent : document.getElementsByTagName("TEXTAREA")[0],
+		initPage : function(){
+			this._htmlContent.value = this._markdownHtml;
+			parseInput();
+		},
+		changeMarkdownType :function(){
+			if(this._selectOption.value == 'Github Flavored Markdown'){
+				this._htmlContent.value = this._gitHubMarkdownHtml;
+				this._parseOption = {type:"gfm"};
+			}
+			if(this._selectOption.value == 'Markdown'){
+				this._htmlContent.value = this._markdownHtml;
+				this._parseOption = null;
+			}
+			console.log(this._parseOption)
+			console.log(this._selectOption.value)
+			parseInput(this._parseOption);
+		},
+		changeContentValue : function(){
+			parseInput(this._parseOption);
+		},
+		_markdownHtml : "<!-- EDIT ME -->\n\n<h1> A header1 text </h1>\n\n"+
+			"<h2>Unordered List</h2>\n<ul>\n\t<li>item1</li>\n\t<li>item2</li>\n</ul>\n\n"+
+			"<h2>Ordered List</h2>\n<ol>\n\t<li>item1</li>\n\t<li>item2</li>\n</ol>\n\n"+
+			"<h1>Code</h1>\n\n"+
+			"<pre>\n<code>var awesomeThing = function(){};</code>\n</pre>\n\n"+
+			"<h1>Block Quote</h1>\n\n"+
+			"<blockquote>\n<p>A blockquote\non multiple lines\nlike this</p></blockquote>\n\n"+
+			"<h1>Your Turn!</h1>",
+		_gitHubMarkdownHtml : "<!-- EDIT ME -->\n\n<h1> A header1 text </h1>\n\n"+
 		"<h2>Unordered List</h2>\n<ul>\n\t<li>item1</li>\n\t<li>item2</li>\n</ul>\n\n"+
-		"<h2>Ordered List</h2>\n<ol>\n\t<li>item1</li>\n\t<li>item2</li>\n</ol>\n\n"+
 		"<h1>Code</h1>\n\n"+
-		"<pre>\n<code>var awesomeThing = function(){};</code>\n</pre>\n\n"+
+		"<pre>\n<code class='language-javascript'>var awesomeThing = function(){};</code>\n</pre>\n\n"+
 		"<h1>Block Quote</h1>\n\n"+
 		"<blockquote>\n<p>A blockquote\non multiple lines\nlike this</p></blockquote>\n\n"+
-		"<h1>Your Turn!</h1>";
-	parseInput();
-	var streamContent = function(){
-		parseInput();
-	}
+		"<h1>Table</h1>\n\n"+
+		"<table><tr><th>Column1</th><th>Column2</th></tr><tr><td>Col1Data</td><td>Col2Data</td></tr></table>\n\n"+
+		"<h1>Your Turn!</h1>"
+	};
+	contentHandler.initPage();
 </script>
 </body>
 </html>
